@@ -1,0 +1,206 @@
+"""""" COLORSCHEMES """"""
+
+" Show unwanted whitespace on leaving insert-mode
+" MUST be inserted BEFORE colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Color Scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+set t_Co=256
+color wombat256mod
+
+" Change colorscheme from default to delek (disabled due to using wombat256mod now)
+" colorscheme delek
+
+
+""""" AUTOSAVE COMMAND
+
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
+
+""""" ENABLING OR DISABLING VIM FUNCTIONS
+
+" Make mouse available
+" set mouse=a
+
+" Indent automatically depending on filetype
+filetype off
+filetype plugin indent on
+set autoindent
+
+" Set syntax on
+syntax on
+
+" Case insensitive search
+set ignorecase   " =set ic
+
+" Higlhight search
+set hlsearch  " =set hls
+
+" To move the cursor to the matched string, while typing the search pattern
+set incsearch
+
+" if a pattern contains an uppercase letter, it is case sensitive, otherwise, it is not
+set smartcase
+
+" Removes highlight of your last search
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+
+
+
+" Disable backup and swap files - triggering too many events for file system watchers
+"" set nobackup
+"" set nowritebackup
+"" set noswapfile
+
+
+""""" CREATE MORE PROGRAMMING ENVIRONMENT """""
+
+" Showing line numbers and length
+set number   " show line numbers
+set tw=79    " width of document (used by gd)
+set nowrap   " don't automatically wrap on load
+set fo-=t    " don't automatically wrap text when typing
+set colorcolumn=80
+highlight ColorColumn ctermbg=233
+
+" Wrap text instead of being on one line (disabled due to nowrap use)
+"set lbr
+
+
+""""" USEFUL SETTINGS """""""""
+set history=700
+set undolevels=700
+
+" Real programmers don't use TAB's but spaces
+"  you want to enter a real tab character use Ctrl-V<Tab> key sequence.
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+
+""""" SETTING KEYS """"""""""""
+
+" enable pastetogle (Then the existing indentation of the pasted text will be retained.)
+set pastetoggle=<F2>
+
+
+""""" REMAPPING KEYS """""""""""
+
+" Quick save command
+noremap <C-Z> :update<CR>
+vnoremap <C-Z> <C-C>:update<CR>
+inoremap <C-Z> <C-O>:update<CR>
+
+" Quick quit command
+noremap <Leader>e :quit<CR>  "Quit current window
+noremap <Leader>E :qa!<CR>   "Quit all windows
+
+" Toggle between absolute and relative number lines "DOESNT WORK WELL
+" nnoremap <Leader>n :call NumberToggle()<cr>
+
+" move around the windows quicker
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" for gui with tabs
+" map <Leader>n <esc>:tabprevious<CR>
+" map <Leader>m <esc>:tabnext<CR>
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+
+" moving blocks and retain the selection
+vnoremap < <gv
+vnoremap > >gv
+
+""""" PLUGINS """"""""""
+
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
+"github.com/tpope/vim-pathogen
+" now you can install any plugin into a .vim/bundle/plugin-name/ folder
+call pathogen#infect()
+
+""""" Python IDE Setup """""""""
+
+" Settings for vim-powerline
+" cd ~/.vim/bundle    ///pathogen install
+" git clone git://github.com/Lokaltog/vim-powerline.git
+set laststatus=2
+
+" Settings for ctrlp
+" cd ~/.vim/bundle    ///pathogen install
+" git clone git://github.com/kien/ctrlp.vim.git
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+set wildignore+=*.kdbx
+
+
+" Settings for python-mode  !!!!NOT USED ANYMORE => jedi-vim
+" cd ~/.vim/bundle    ///pathogen install
+" git clone git://github.com/klen/python-mode
+" map <Leader>g :call RopeGotoDefinition()<CR>
+" let ropevim_enable_shortcuts = 1
+" let g:pymode_rope_goto_def_newwin = "vnew"
+" let g:pymode_rope_extended_complete = 1
+" let g:pymode_breakpoint = 0
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_bultin_objs = 0
+" let g:pymode_syntix_builtin_funcs = 0
+" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+" Settings for jedi-vim                                                         
+" sudo apt-get install python-pip
+" pip install jedi
+" sudo pip install ipdb
+" cd ~/.vim/bundle                                                              
+" git clone git://github.com/davidhalter/jedi-vim.git                           
+let g:jedi#usages_command = "<leader>z"                                         
+let g:jedi#popup_on_dot = 0                                                     
+let g:jedi#popup_select_first = 0                                               
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>    
+
+" Better navigation through omnicomplete option list
+"
+set completeopt=longest,menuone
+function! OmniPopup(action)
+    if pumvisible()
+        if a:action == 'j'
+            return "\<C-N>"
+        elseif a:action == 'k'
+            return "\<C-P>"
+        endif
+    endif
+    return a:action
+endfunction
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+
+" Python folding
+" mkdir -p ~/.vim/ftplugin
+" wget -O ~/.vim/ftplugin/python_editing.vim  http://www.vim.org/scripts/download_script.php?src_id=5492
+set nofoldenable
+
+
+" Toggle between relative and absolute line numbers "DOESNT WORK WELL
+" function! NumberToggle()
+"  if(&relativenumber == 1)
+"    set number
+"  else
+"    set relativenumber
+"  endif
+" endfunc
+
