@@ -49,8 +49,9 @@ set expandtab
 
 """"" remapping """""
 
-" copy to clipboard
-vnoremap <Leader>c "+y
+" copy text until next space to clipboard
+" to be improved : space||tab||enter
+noremap <Leader>cl vf<Space>"+y
 
 " remove highlight after search
 noremap <C-n> :nohl<CR>
