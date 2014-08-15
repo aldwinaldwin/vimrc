@@ -73,8 +73,10 @@ endif
 
 " give colors to the indent blocks
 nnoremap <leader>B :call BlockColor()<cr>
-" copy to clipboard
-vnoremap <Leader>c "+y
+
+" copy text until next space to clipboard
+" to be improved : space||tab||enter
+noremap <Leader>cl vf<Space>"+y
 
 " see indent guidlines
 nnoremap <leader>I :call IndentGuides()<cr>
