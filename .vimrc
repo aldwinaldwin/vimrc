@@ -1,4 +1,4 @@
-"""""" COLORSCHEMES """"""
+" COLORSCHEMES {{{1
 
 " Show unwanted whitespace on leaving insert-mode
 " MUST be inserted BEFORE colorscheme command
@@ -12,9 +12,7 @@ set background=dark
 set t_Co=256           " set 256 colors
 color wombat256mod
 
-
-
-""""" vim functions """"""
+" VIM FUNCTIONS {{{1
 
 " Indent automatically depending on filetype
 filetype off
@@ -48,6 +46,12 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
+set encoding=utf-8
+set list
+set listchars=tab:▸\ ,eol:¬
+
+set foldmethod=marker
+
 " Backup/Swap/Undo stuff
 set backup
 set noswapfile
@@ -69,7 +73,7 @@ endif
 
 
 
-""""" remapping """""
+""""" remapping """"" {{{1
 
 " give colors to the indent blocks
 nnoremap <leader>B :call BlockColor()<cr>
@@ -99,8 +103,8 @@ vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
 " Resize splits
-nnoremap <C-h> 5<C-w>>
-nnoremap <C-l> 5<C-w><
+nnoremap <C-h> 5<C-w><
+nnoremap <C-l> 5<C-w>>
 nnoremap <C-k> <C-w>+
 nnoremap <C-j> <C-w>-
 " Jump between splits faster
@@ -139,14 +143,14 @@ cmap w!! w !sudo tee > /dev/null %
 
 
 
-""""" au """""
+""""" au """"" {{{1
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
 
 
-""""" augroup """""
+""""" augroup """"" {{{1
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -157,15 +161,17 @@ augroup line_return
         \ endif
 augroup END
 
-""""" abreviations """""
+""""" abreviations """"" {{{1
 inoreabbrev aag@ aldwinaldwin@gmail.com
 inoreabbrev aah@ aldwinaldwin@hotmail.com
 
-""""" PLUGINS """"""""
+
+
+""""" PLUGINS """""""" {{{1
 
 " Pathogen : to manage your plugins
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
+" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 "github.com/tpope/vim-pathogen
 " now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
@@ -177,7 +183,7 @@ set laststatus=2
 
 
 
-"""""" FUNCTIONS """""
+"""""" FUNCTIONS """"" {{{1
 
 " Highlight Word
 "

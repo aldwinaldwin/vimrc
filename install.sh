@@ -26,7 +26,8 @@ wget -O ~/.vim/colors/wombat256mod.vim http://www.vim.org/scripts/download_scrip
 
 # Pathogen : manage your plugins
 mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+#curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+wget -O ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # Vim-Powerline : better-looking, more functional vim statuslines
 git clone git://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline/
