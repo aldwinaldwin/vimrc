@@ -30,7 +30,7 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 wget -O ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # Vim-Powerline : better-looking, more functional vim statuslines
-git clone git://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline/
+git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline/
 
     echo "New .vimrc and .vim placed in your home directory ... Thank you ... Bye!"
 else

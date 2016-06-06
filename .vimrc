@@ -29,6 +29,7 @@ set smartcase " if a pattern contains an uppercase letter, it is case sensitive,
 
 " enable pastetogle (Then the existing indentation of the pasted text will be retained.)
 set pastetoggle=<F2>
+set paste
 
 " Showing line numbers and length and some more programming environment stuff
 set number              " show line numbers
