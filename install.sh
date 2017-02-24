@@ -32,6 +32,11 @@ wget -O ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim
 # Vim-Powerline : better-looking, more functional vim statuslines
 git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline/
 
+git clone https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim/
+pushd ~/.vim/bundle/jedi-vim/
+git submodule update --init
+popd
+
     echo "New .vimrc and .vim placed in your home directory ... Thank you ... Bye!"
 else
   echo "ok, mayby later then ... bye bye!"

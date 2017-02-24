@@ -29,7 +29,7 @@ set smartcase " if a pattern contains an uppercase letter, it is case sensitive,
 
 " enable pastetogle (Then the existing indentation of the pasted text will be retained.)
 set pastetoggle=<F2>
-set paste
+" set paste  " if set paste, ctrl-space doesn't work for jedi-vim
 
 " Showing line numbers and length and some more programming environment stuff
 set number              " show line numbers
