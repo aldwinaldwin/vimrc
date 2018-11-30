@@ -29,6 +29,9 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 #curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 wget -O ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
+# Vim-GitGutter
+git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter/
+
 # Vim-Powerline : better-looking, more functional vim statuslines
 git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline/
 
