@@ -183,7 +183,8 @@ call pathogen#infect()
 " git clone git://github.com/Lokaltog/vim-powerline.git
 set laststatus=2
 
-
+" gitgutter
+set updatetime=100
 
 """""" FUNCTIONS """"" {{{1
 
