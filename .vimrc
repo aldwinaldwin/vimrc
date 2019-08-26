@@ -142,11 +142,9 @@ nnoremap <Leader>eeg :split /etc/group
 nnoremap <Leader>eeh :split /etc/hosts
 
 cmap w!! w !sudo tee > /dev/null %
-" remove all trailing spaces
-map *ds :%s/\s\+$//e
-" pretty print json
-map *js :% !python -m json.tool
-
+map *ds :%s/\s\+$//e                    " remove all trailing spaces
+map *js :% !python -m json.tool         " pretty print json
+map *ex  :!chmod +x %
 
 
 """"" au """"" {{{1
